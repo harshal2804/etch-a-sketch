@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Karla:wght@700&family=Poppins:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+
+@font-face {
+    font-family: 'cinnamon-coffe-cake';
+    src: url(./Fonts/CinnamonCoffeCake-Ea2Pr.ttf);
+}
+
+.container{
+    background-color: black;
+    height: 600px;
+    width: 600px;
+    display: grid;
+    grid-template-rows: 41.25px;
+    grid-template-columns: 41.25px;
+}
+
+.item{
+    background-color: rgb(225, 225, 225);
+}
+
+.main{
+    margin: 40px auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.features{
+    display: flex;
+    flex-direction: column;
+}
+
+.title{
+    font-family: 'cinnamon-coffe-cake';
+    font-size: 55px;
+    color: white;
+}
+
+.grid--size--text{
+    color: white;
+    font-family: 'Karla';
+    font-size: 20px;
+}
+
+.grid--size{
+    background-color: white;
+    font-family: 'karla';
+    height: 20px;
+    border: 3px grey solid;
+    border-radius: 20px;
+}
+
+.pen--color--text{
+    color: white;
+    font-family: 'Karla';
+    font-size: 20px;
+}
+
+.pen--color{
+    background-color: white;
+    font-family: 'karla';
+    height: 20px;
+    border: 3px grey solid;
+    border-radius: 20px;
+}
+
+.changes{
+    background-color: white;
+}
