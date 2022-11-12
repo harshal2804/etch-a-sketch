@@ -1,33 +1,35 @@
+let container = document.getElementsByClassName("container")
 let gridSize = document.getElementById("gridSize")
 let penColor = document.getElementById("penColor")
 let applychanges = document.getElementById("change")
-let container = document.querySelector('.container')
+let eraser = document.getElementById("eraser")
+let clear = document.getElementById("clear")
 
-let size
+let currentSize
 let color = "#000000"
 if(gridSize.value==""){
-    size = 16
+    currentSize = 16
 }
 else if(gridSize.value<=0){
     alert("Grid size cannot be negative or zero!")
-    size = gridSize.value
+    currentSize = gridSize.value
 }
 else if(gridSize.value>=100){
     alert("Grid size should not exceed 100!")
-    size = gridSize.value
+    currentSize = gridSize.value
 }
-console.log(size)
-let gridItemSize = `${660/size}px `
-container.style.gridTemplateRows = gridItemSize.repeat(size)
-container.style.gridTemplateColumns = gridItemSize.repeat(size)
 
-for(let i=0; i<size*size; i++)
+let gridItemSize = `${650/currentSize}px `
+container[0].style.gridTemplateRows = gridItemSize.repeat(currentSize)
+container[0].style.gridTemplateColumns = gridItemSize.repeat(currentSize)
+
+for(let i=0; i<currentSize*currentSize; i++)
 {
     let divElement = document.createElement('div')
     divElement.setAttribute('class','item')
     divElement.addEventListener('mouseover', changeBgcolor)
     divElement.addEventListener('click', changeBgcolor)
-    container.appendChild(divElement) 
+    container[0].appendChild(divElement) 
 }
 
 let mouseDown = false
@@ -40,7 +42,57 @@ function changeBgcolor(e) {
     }
 }
 
-applychanges.onclick = () => {
-    size = gridSize.value
-    color = penColor.value
+function clearBg() {
+    for(let i=0; i<currentSize*currentSize; i++)
+    {
+        container[0].childNodes[i].style.backgroundColor = 'white'
+    }
 }
+
+applychanges.onclick = () => {
+    color = penColor.value
+    if(gridSize.value==""){
+        currentSize = 16
+    }
+    else if(gridSize.value<=0){
+        alert("Grid currentSize cannot be negative or zero!")
+    }
+    else if(gridSize.value>100){
+        alert("Grid currentSize should not exceed 100!")
+    }
+    else{
+        if(currentSize!==gridSize.value){
+            console.log(currentSize)
+            clearBg()
+        }
+        currentSize = gridSize.value
+    }
+
+    let gridItemSize = `${650/currentSize}px `
+    container[0].style.gridTemplateRows = gridItemSize.repeat(currentSize)
+    container[0].style.gridTemplateColumns = gridItemSize.repeat(currentSize)
+
+    for(let i=0; i<currentSize*currentSize; i++)
+    {
+        let divElement = document.createElement('div')
+        divElement.setAttribute('class','item')
+        divElement.addEventListener('mouseover', changeBgcolor)
+        divElement.addEventListener('click', changeBgcolor)
+        container[0].appendChild(divElement) 
+    }
+}
+
+clear.onclick = () => {
+    clearBg()
+}
+
+let prevColor
+eraser.addEventListener('change',() => {
+    if(eraser.checked){
+        prevColor = color
+        color = 'white'
+    }
+    else{
+        color = prevColor
+    }
+})
