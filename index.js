@@ -6,7 +6,7 @@ let eraser = document.getElementById("eraser")
 let clear = document.getElementById("clear")
 
 let currentSize
-let color = "#000000"
+let color = penColor.value
 if(gridSize.value==""){
     currentSize = 16
 }
@@ -27,6 +27,12 @@ for(let i=0; i<currentSize*currentSize; i++)
 {
     let divElement = document.createElement('div')
     divElement.setAttribute('class','item')
+    divElement.addEventListener('dragstart',(e) => {
+        e.preventDefault()
+    })
+    divElement.addEventListener('drop',(e) => {
+        e.preventDefault()
+    })
     divElement.addEventListener('mouseover', changeBgcolor)
     divElement.addEventListener('click', changeBgcolor)
     container[0].appendChild(divElement) 
@@ -76,6 +82,12 @@ applychanges.onclick = () => {
     {
         let divElement = document.createElement('div')
         divElement.setAttribute('class','item')
+        divElement.addEventListener('dragstart',(e) => {
+            e.preventDefault()
+        })
+        divElement.addEventListener('drop',(e) => {
+            e.preventDefault()
+        })
         divElement.addEventListener('mouseover', changeBgcolor)
         divElement.addEventListener('click', changeBgcolor)
         container[0].appendChild(divElement) 
