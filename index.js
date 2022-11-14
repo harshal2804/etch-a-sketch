@@ -68,7 +68,6 @@ applychanges.onclick = () => {
     }
     else{
         if(currentSize!==gridSize.value){
-            console.log(currentSize)
             clearBg()
         }
         currentSize = gridSize.value
